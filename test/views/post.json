@@ -1,4 +1,8 @@
 {
+	"id": {},
+	"slug": {
+		"format": "getPostSlug"
+	},
 	"title": {},
 	"content": {},
 	"author": {

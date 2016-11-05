@@ -29,6 +29,7 @@
     "lodash": "^4.16.6"
   },
   "devDependencies": {
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "should": "^11.1.1"
   }
 }

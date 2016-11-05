@@ -15,8 +15,8 @@ var viewEngine = require('express-json-views');
 app.engine('json', viewEngine({
        helpers: require('./views/helpers')
    }));
-app.set('views', path.join(__dirname, '/views')); // specify the views directory
-app.set('view engine', 'json'); // register the template engine
+app.set('views', __dirname + '/views');
+app.set('view engine', 'json');
 ```
 
 ## Features & examples

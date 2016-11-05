@@ -20,3 +20,8 @@ A JSON view engine for express to render objects, lists with views, sub-views an
 ```
 
 ## Features & examples
+
+## Test
+```bash
+	$ npm test
+```

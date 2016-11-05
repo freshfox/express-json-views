@@ -1,0 +1,26 @@
+{
+  "name": "express-json-views",
+  "version": "0.1.0",
+  "description": "A JSON view engine for express",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/freshfox/express-json-views.git"
+  },
+  "keywords": [
+    "express",
+    "views",
+    "json",
+    "rest",
+    "api"
+  ],
+  "author": "Dominic Bartl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/freshfox/express-json-views/issues"
+  },
+  "homepage": "https://github.com/freshfox/express-json-views#readme"
+}

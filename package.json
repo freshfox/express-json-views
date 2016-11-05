@@ -22,5 +22,13 @@
   "bugs": {
     "url": "https://github.com/freshfox/express-json-views/issues"
   },
-  "homepage": "https://github.com/freshfox/express-json-views#readme"
+  "homepage": "https://github.com/freshfox/express-json-views#readme",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "graceful-fs": "^4.1.10",
+    "lodash": "^4.16.6"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2"
+  }
 }

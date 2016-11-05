@@ -1,0 +1,11 @@
+{
+	"title": {},
+	"content": {},
+	"author": {
+		"view": "user"
+	},
+	"comments": {
+		"view": "comment"
+	},
+	"published_date": {}
+}

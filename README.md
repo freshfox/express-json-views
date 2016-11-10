@@ -104,7 +104,7 @@ var helpers = {
 	}
 };
 ```
-If you return a ```Promise``` the view engine will resolve use it.
+If you return a ```Promise``` the view engine will resolve use it. Though I would strongly advise you, not to do async calls here.
 
 ## Test
 ```bash

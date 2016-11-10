@@ -4,14 +4,10 @@ var JsonViewEngine = require('../lib/engine');
 var settings = {
 	views: path.join(__dirname, 'views')
 };
+var Promise = require('bluebird');
 function getViewPath(view) {
 	return path.join(settings.views, view + '.json');
 }
-var helpers = {
-	getPostSlug: function (value, post) {
-
-	}
-};
 
 describe('JsonViewEngine', function () {
 
@@ -93,6 +89,29 @@ describe('JsonViewEngine', function () {
 				.then(function (rendered) {
 					should(rendered).eql({
 						dynamic: 'hello_world'
+					});
+				});
+		});
+
+		it('should use a promise in a view helper', function () {
+
+			var helpers = {
+				calculate: function (value) {
+					return Promise.resolve(value + '_42');
+				}
+			};
+			var engine = new JsonViewEngine({helpers:helpers});
+			var data = {value: 'answer'};
+			var view = {
+				value: {
+					format: 'calculate'
+				}
+			};
+
+			return engine.renderData(view, data, settings)
+				.then(function (rendered) {
+					should(rendered).eql({
+						value: 'answer_42'
 					});
 				});
 		});

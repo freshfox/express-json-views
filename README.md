@@ -1,6 +1,8 @@
 # express-json-views
 A JSON view engine for express to render objects, lists with views, sub-views and helpers.
 
+[![npm version](https://badge.fury.io/js/express-json-views.svg)](https://badge.fury.io/js/express-json-views)
+
 ## Motivation
 Even though ```express``` can send JSON responses out of the box, in a lot
 of cases the response object or database models needs to be formatted. Think like DTOs in Java.

@@ -49,5 +49,55 @@ describe('JsonViewEngine', function () {
 
 	});
 
+	describe('ViewHelpers', function () {
+
+		it('should format a value with a helper function', function () {
+
+			var helpers = {
+				prefix: function (value) {
+					return 'hello_' + value;
+				}
+			};
+			var engine = new JsonViewEngine({helpers:helpers});
+			var data = {hello: 'world'};
+			var view = {
+				hello: {
+					format: 'prefix'
+				}
+			};
+
+			return engine.renderData(view, data, settings)
+				.then(function (rendered) {
+					should(rendered).eql({
+						hello: 'hello_world'
+					});
+				});
+		});
+
+		it('should pass full object to helper function', function () {
+
+			var helpers = {
+				prefix: function (value, obj) {
+					return 'hello_' + obj.hello;
+				}
+			};
+			var engine = new JsonViewEngine({helpers:helpers});
+			var data = {hello: 'world'};
+			var view = {
+				dynamic: {
+					format: 'prefix'
+				}
+			};
+
+			return engine.renderData(view, data, settings)
+				.then(function (rendered) {
+					should(rendered).eql({
+						dynamic: 'hello_world'
+					});
+				});
+		});
+
+	});
+
 
 });

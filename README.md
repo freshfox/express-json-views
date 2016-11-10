@@ -64,7 +64,8 @@ Possible configurations are:
 
 ### Rendering objects and lists
 You don't have to worry about whether you want to render a single object or a list of objects.
-The view engine detects if you pass an array and will iterate over it.
+The view engine detects if you pass an array and will iterate over it. call ```res.render(...)```
+and pass the view name and an object with a property called **data** which contains your data.
 ```js
 
 app.get('/posts', function (req, res) {

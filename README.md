@@ -1,25 +1,29 @@
 # express-json-views
-A JSON view engine for express to render objects, lists with views, sub-views and helpers.
+A JSON view engine for the express framework to render
+objects and arrays with views written in JSON and helper functions.
 
 [![npm version](https://badge.fury.io/js/express-json-views.svg)](https://badge.fury.io/js/express-json-views)
+[![Build Status](https://travis-ci.org/freshfox/express-json-views.svg?branch=master)](https://travis-ci.org/freshfox/express-json-views)
 
 ## Motivation
-Even though ```express``` can send JSON responses out of the box, in a lot
+Even though ```express``` can send JSON responses out of the box by just retuning, in a lot
 of cases the response object or database models needs to be formatted. Think like DTOs in Java.
 Unnecessary or sensitive information like passwords need to be omitted,
 values need to be formatted and sub-objects/lists need to be
-rendered as well, which also should be able to utilize the already mentioned features.
+altered as well.
 
 ### Features
+- Recursively render objects and arrays
 - Omit values
 - Rename object keys
-- Format values
+- Format values using helpers
 - Sub views and lists
 - View caching
 
 ## Setup
 ```bash
-$ npm install --save express-json-views
+$ npm install express-json-views
+$ yarn add express-json-views
 ```
 
 ```js
@@ -36,7 +40,7 @@ app.set('view engine', 'json');
 ## Features & examples
 
 ### Defining views
-Views are defined using json files and located in a single directory in your project.
+Views are defined using JSON files and located in a single directory in your project.
 ```json
 {
 	"id": {},

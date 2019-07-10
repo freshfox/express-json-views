@@ -45,6 +45,33 @@ describe('JsonViewEngine', function () {
 
 	});
 
+	it('should render with nested object', function () {
+		var engine = new JsonViewEngine();
+		var data = {
+			address: {
+				city: {
+					name: 'HCM',
+					code: '700000'
+				},
+				street: 'TCH10'
+			}
+		};
+		var view = {
+			address: {
+				city: {
+					name: {},
+					code: {}
+				},
+				street: {}
+			}
+		};
+
+		return engine.renderData(view, data, settings)
+			.then(function (rendered) {
+				should(rendered).eql(data);
+			});
+	});
+
 	describe('ViewHelpers', function () {
 
 		it('should format a value with a helper function', function () {
@@ -67,6 +94,36 @@ describe('JsonViewEngine', function () {
 					should(rendered).eql({
 						hello: 'hello_world'
 					});
+				});
+		});
+
+		it('should format a value (nested object) with a helper function', function () {
+			var helpers = {
+				getCityName: function (name) {
+					return 'hello_' + name;
+				}
+			};
+			var engine = new JsonViewEngine({helpers:helpers});
+			var data = {
+				address: {
+					city: {
+						name: 'HCM',
+					}
+				}
+			};
+			var view = {
+				address: {
+					city: {
+						name: {
+							format: 'getCityName'
+						},
+					}
+				}
+			};
+
+			return engine.renderData(view, data, settings)
+				.then(function (rendered) {
+					should(rendered.address.city.name).eql('hello_HCM');
 				});
 		});
 

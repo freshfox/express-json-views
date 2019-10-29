@@ -5,6 +5,7 @@ var settings = {
 	views: path.join(__dirname, 'views')
 };
 var Promise = require('bluebird');
+
 function getViewPath(view) {
 	return path.join(settings.views, view + '.json');
 }
@@ -72,6 +73,34 @@ describe('JsonViewEngine', function () {
 			});
 	});
 
+	it('should render an array of objects', async () => {
+		var engine = new JsonViewEngine();
+		var data = [{
+			firstname: 'John',
+			lastname: 'Doe',
+			age: 27
+		}, {
+			firstname: 'Jane',
+			lastname: 'Doe',
+			age: 26
+		}];
+
+		return engine.renderData({
+			firstname: {},
+			lastname: {}
+		}, data, settings)
+			.then(function (rendered) {
+				should(rendered).eql([{
+					firstname: 'John',
+					lastname: 'Doe',
+				}, {
+					firstname: 'Jane',
+					lastname: 'Doe',
+				}]);
+
+			});
+	});
+
 	describe('ViewHelpers', function () {
 
 		it('should format a value with a helper function', function () {
@@ -81,7 +110,7 @@ describe('JsonViewEngine', function () {
 					return 'hello_' + value;
 				}
 			};
-			var engine = new JsonViewEngine({helpers:helpers});
+			var engine = new JsonViewEngine({helpers: helpers});
 			var data = {hello: 'world'};
 			var view = {
 				hello: {
@@ -103,7 +132,7 @@ describe('JsonViewEngine', function () {
 					return 'hello_' + name;
 				}
 			};
-			var engine = new JsonViewEngine({helpers:helpers});
+			var engine = new JsonViewEngine({helpers: helpers});
 			var data = {
 				address: {
 					city: {
@@ -134,7 +163,7 @@ describe('JsonViewEngine', function () {
 					return 'hello_' + obj.hello;
 				}
 			};
-			var engine = new JsonViewEngine({helpers:helpers});
+			var engine = new JsonViewEngine({helpers: helpers});
 			var data = {hello: 'world'};
 			var view = {
 				dynamic: {
@@ -157,7 +186,7 @@ describe('JsonViewEngine', function () {
 					return Promise.resolve(value + '_42');
 				}
 			};
-			var engine = new JsonViewEngine({helpers:helpers});
+			var engine = new JsonViewEngine({helpers: helpers});
 			var data = {value: 'answer'};
 			var view = {
 				value: {

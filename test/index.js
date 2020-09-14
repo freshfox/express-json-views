@@ -37,9 +37,9 @@ describe('JsonViewEngine', function () {
 	it('should render data', function () {
 
 		var engine = new JsonViewEngine();
-		var data = {hello: 'world'};
+		var data = {hello: 'world', date: new Date('2020-09-14')};
 
-		return engine.renderData({hello: {}}, data, settings)
+		return engine.renderData({hello: {}, date: {}}, data, settings)
 			.then(function (rendered) {
 				should(rendered).eql(data);
 			});

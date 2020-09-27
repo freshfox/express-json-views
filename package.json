@@ -1,6 +1,6 @@
 {
   "name": "express-json-views",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A JSON view engine for express",
   "main": "index.js",
   "scripts": {

@@ -101,6 +101,27 @@ describe('JsonViewEngine', function () {
 			});
 	});
 
+	it('should render sub object without options', function () {
+		var engine = new JsonViewEngine();
+		var data = {
+			settings: {
+				prop1: true
+			}
+		}
+
+		return engine.renderData({
+			settings: {},
+		}, data, settings)
+			.then(function (rendered) {
+				should(rendered).eql({
+					settings: {
+						prop1: true
+					}
+				});
+
+			});
+	});
+
 	describe('ViewHelpers', function () {
 
 		it('should format a value with a helper function', function () {
